@@ -27,9 +27,9 @@ data-files:
     - data/tests/iplookup/*.*
     - data/benchmarks/iplookup/*.*
 
-tested-with: GHC == 8.6.5, GHC == 8.8.3
+tested-with: GHC == 9.2.7
 
-dependencies: base >=4.12 && <4.15
+dependencies: base >=4.16 && <4.17
 
 flags:
   with-pg:
@@ -108,7 +108,7 @@ executables:
         dependencies:
           - bytestring >=0.10 && <0.12
           - blaze-html >=0.9 && <0.10
-          - optparse-applicative >=0.14 && <0.17
+          - optparse-applicative >=0.17 && <0.18
           - time >=1.8 && <1.12
           - text >=1.2 && <1.3
           - fmt >=0.5 && <0.7
@@ -214,7 +214,7 @@ executables:
           - filepath >= 1.4.1 && < 1.5
           - directory >= 1.3 && < 1.4
           - unix-compat >= 0.5 && < 0.6
-          - optparse-applicative >= 0.14 && < 0.17
+          - optparse-applicative >= 0.17 && < 0.18
           - text >=1.2 && <1.3
           - text-show >=3.0 && <4
           - extra >=1.5 && <1.8
@@ -251,10 +251,10 @@ executables:
           - time >=1.8 && <1.12
           - text >=1.2 && <1.3
           - exceptions >= 0.10 && < 0.11
-          - aeson >= 1.2 && < 1.6
-          - req >= 2.0 && < 3.10
+          - aeson >= 2.0 && < 2.1
+          - req >= 2.0 && < 3.14
           - http-client >= 0.4 && < 0.8
-          - optparse-applicative >= 0.14 && < 0.17
+          - optparse-applicative >= 0.17 && < 0.18
           - bytestring >= 0.10 && < 0.12
         default-extensions:
           - OverloadedStrings
@@ -274,15 +274,15 @@ executables:
         main: ip/lookup/Main.hs
         dependencies:
           - exceptions >= 0.10 && < 0.11
-          - optparse-applicative >= 0.14 && < 0.17
+          - optparse-applicative >= 0.17 && < 0.18
           - iplookup-lib
     ipgen:
         main: ip/gen/Main.hs
         dependencies:
           - ipgen-lib
           - exceptions >= 0.10 && < 0.11
-          - optparse-applicative >= 0.14 && < 0.17
-          - hedgehog >= 0.5 && < 1.1
+          - optparse-applicative >= 0.17 && < 0.18
+          - hedgehog >= 0.5 && < 1.2
     # Chapter 9
     unboxed:
         main: ch09/unboxed.hs
@@ -382,7 +382,7 @@ executables:
         source-dirs: ch12/deriv/
         main: strategies.hs
         dependencies:
-          - aeson >= 1.2 && < 1.6
+          - aeson >= 2.0 && < 2.1
     coerce:
         source-dirs: ch12/deriv/
         main: coerce.hs
@@ -412,19 +412,19 @@ executables:
         main: Main.hs
         other-modules: [ Hello ]
         dependencies:
-          - template-haskell >=2.13 && <2.17
+          - template-haskell >=2.13 && <2.19
     projectors:
         source-dirs: ch12/th/projectors/
         main: Main.hs
         other-modules: [ Projectors ]
         dependencies:
-          - template-haskell >=2.13 && <2.17
+          - template-haskell >=2.13 && <2.19
     predicates:
         source-dirs: ch12/th/predicates/
         main: Main.hs
         other-modules: [ Predicates ]
         dependencies:
-          - template-haskell >=2.13 && <2.17
+          - template-haskell >=2.13 && <2.19
         ghc-options:
           - -Wno-missing-signatures
           - -Wno-incomplete-patterns
@@ -433,7 +433,7 @@ executables:
         main: Main.hs
         other-modules: [ Str ]
         dependencies:
-          - template-haskell >=2.13 && <2.17
+          - template-haskell >=2.13 && <2.19
         ghc-options:
           - -Wno-missing-signatures
           - -Wno-incomplete-patterns
@@ -480,10 +480,10 @@ executables:
     api-servant:
         main: ch13/api/ApiServant.hs
         dependencies:
-          - servant-server >=0.14 && <0.19
+          - servant-server >=0.14 && <0.20
           - servant-blaze >=0.7 && <0.10
           - warp >=3.2 && < 3.4
-          - aeson >= 1.2 && < 1.6
+          - aeson >= 2.0 && < 2.1
           - blaze-html >=0.9 && <0.10
     unsafe-elevator:
         source-dirs: ch13/elevator/
@@ -510,7 +510,8 @@ executables:
           - KindSignatures
           - StandaloneDeriving
         dependencies:
-          - singletons >= 2.5 && < 2.8
+          - singletons >= 2.5 && < 3.1
+          - singletons-th >=3.1 && < 3.2
         ghc-options:
           - -Wno-unticked-promoted-constructors
     elevator:
@@ -525,7 +526,8 @@ executables:
         dependencies:
           - fin >= 0.1 && < 0.3
           - dec >= 0.0.3 && < 0.1
-          - singletons >= 2.5 && < 2.8
+          - singletons >= 2.5 && < 3.1
+          - singletons-th >= 3.1 && < 3.2
           - mtl >=2.0 && <2.3
         ghc-options:
           - -Wno-unticked-promoted-constructors
@@ -556,7 +558,7 @@ executables:
         main: ch14/csv-simple.hs
         dependencies:
           - text >=1.2 && <1.3
-          - attoparsec >=0.13 && <0.14
+          - attoparsec >=0.14 && <0.15
           - bytestring >=0.10 && <0.12
           - streaming-utils >=0.2 && <0.3
           - streaming-bytestring >=0.1.7 && <0.3
@@ -565,7 +567,7 @@ executables:
     lens-ex:
         main: ch14/lens-ex.hs
         dependencies:
-          - lens >= 4.17 && < 4.20
+          - lens >= 5.1 && < 5.2
     covid:
         source-dirs: ch14/covid
         main: Main.hs
@@ -575,12 +577,12 @@ executables:
           - text >=1.2 && <1.3
           - text-show >=3.0 && <4
           - containers >= 0.5 && < 0.7
-          - lens >= 4.17 && < 4.20
+          - lens >= 5.1 && < 5.2
           - streaming-utils >=0.2 && <0.3
           - streaming-bytestring >=0.1.7 && <0.3
           - streaming >=0.2.2 && <0.4
           - resourcet >=1.2 && <1.3
-          - attoparsec >=0.13 && <0.14
+          - attoparsec >=0.14 && <0.15
     # Chapter 15
     hdbc:
         when:
@@ -786,7 +788,7 @@ internal-libraries:
         other-modules: []
         dependencies:
           - iplookup-lib
-          - hedgehog >= 0.5 && < 1.1
+          - hedgehog >= 0.5 && < 1.2
     # Chapter 9
     isprime-lib:
       source-dirs: ch09/isprime
@@ -809,7 +811,7 @@ internal-libraries:
         - connection >= 0.3 && <0.4
         - network-simple >=0.4.5 && <0.5
         - exceptions >= 0.10 && < 0.11
-        - template-haskell >= 2.13 && <2.17
+        - template-haskell >= 2.13 && <2.19
         - haskell-src-exts >= 1.20 && <1.24
         - haskell-src-meta >= 0.6 && < 0.9
 tests:
@@ -847,8 +849,8 @@ tests:
           - ipgen-lib
           - tasty >= 0.11 && < 1.5
           - tasty-hspec >= 1.1 && < 1.2
-          - tasty-hedgehog >= 0.1 && < 1.1
-          - hedgehog >= 0.5 && < 1.1
+          - tasty-hedgehog >= 0.1 && < 1.2
+          - hedgehog >= 0.5 && < 1.2
           - tasty-golden >= 2.3 && < 2.4
           - filepath >= 1.4.1 && < 1.5
         ghc-options:
