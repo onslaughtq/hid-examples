@@ -528,6 +528,7 @@ executables:
           - dec >= 0.0.3 && < 0.1
           - singletons >= 2.5 && < 3.1
           - singletons-th >= 3.1 && < 3.2
+          - singletons-base
           - mtl >=2.0 && <2.3
         ghc-options:
           - -Wno-unticked-promoted-constructors
