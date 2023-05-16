@@ -22,7 +22,8 @@
 module Elevator.Safe.Operations where
 
 import Data.Type.Nat
-import Data.Singletons.TH
+import Data.Eq.Singletons
+import Data.Singletons.Base.TH
 import Control.Monad.Trans
 
 import qualified Elevator.LowLevel as LL

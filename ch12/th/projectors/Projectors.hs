@@ -2,6 +2,7 @@
 module Projectors where
 
 import Language.Haskell.TH
+import TemplateHaskell.Compat.V0208
 
 proj :: Int -> Int -> Q Exp
 {-
@@ -55,7 +56,7 @@ mkProjType n k = sigD nm funTy
     funTy = do
       resTy <- newName "res"
       tys <- mapM (getTy resTy) [0..n-1]
-      forallT (map plainTV tys)
+      forallT (map specifiedPlainTV tys)
               (pure [])
               [t| $(mkTuple tys) -> $(varT resTy) |]
 
