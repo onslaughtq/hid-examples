@@ -1429,6 +1429,7 @@ test-suite iplookup-test
       tests/iplookup
       ip/gen
       ip/lookup
+      ip/common
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -Wno-type-defaults -Wno-incomplete-uni-patterns
   build-depends:
       base ==4.16.*
@@ -1477,9 +1478,22 @@ test-suite shunting-yard-test
 benchmark iplookup-bench
   type: exitcode-stdio-1.0
   main-is: Bench.hs
+  other-modules:
+      BenchBuildIPGroups
+      BenchLookupIP
+      BenchParseIP
+      BenchRanges
+      Data
+      FastLookup
+      LookupIP
+      NFUtils
+      ParseIP
+      IPTypes
+      Paths_hid_examples
   hs-source-dirs:
       benchmarks/iplookup
       ip/lookup
+      ip/common
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -Wno-incomplete-uni-patterns
   build-depends:
       base ==4.16.*

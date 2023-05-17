@@ -795,7 +795,7 @@ tests:
     # Chapter 8
     iplookup-test:
         main: Test.hs
-        source-dirs: [tests/iplookup, ip/gen, ip/lookup]
+        source-dirs: [tests/iplookup, ip/gen, ip/lookup, ip/common]
         other-modules: [ FastLookup, GenIP, GoldenTests, IPTypes, LookupIP, LookupIPSpec, ParseIP, ParseIPSpec, Props ]
         dependencies:
           - tasty >= 0.11 && < 1.5
@@ -824,8 +824,8 @@ benchmarks:
         dependencies:
           - criterion >= 1.4 && < 1.6
     iplookup-bench:
-        source-dirs: [benchmarks/iplookup, ip/lookup]
-        other-modules: []
+        source-dirs: [benchmarks/iplookup, ip/lookup, ip/common]
+        other-modules: [BenchBuildIPGroups, BenchLookupIP,BenchParseIP,BenchRanges,Data,FastLookup,LookupIP,NFUtils,ParseIP,IPTypes,Paths_hid_examples]
         main: Bench.hs
         dependencies:
           - criterion >= 1.4 && < 1.6
