@@ -1,4 +1,4 @@
-cabal-version: 2.0
+cabal-version: 1.12
 
 -- This file has been generated from package.yaml by hpack version 0.35.1.
 --
@@ -70,125 +70,9 @@ library
       base ==4.16.*
   default-language: Haskell2010
 
-library contexts
-  exposed-modules:
-      Contexts
-  hs-source-dirs:
-      ch02
-  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
-  build-depends:
-      base ==4.16.*
-    , mtl >=2.0 && <2.3
-  default-language: Haskell2010
-
-library expr-simple
-  exposed-modules:
-      Expr
-  hs-source-dirs:
-      expr
-  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
-  build-depends:
-      base ==4.16.*
-    , text-show >=3.0 && <4
-  default-language: Haskell2010
-
-library ipgen-lib
-  exposed-modules:
-      GenIP
-  hs-source-dirs:
-      ip/gen
-  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
-  build-depends:
-      base ==4.16.*
-    , hedgehog >=0.5 && <1.2
-    , iplookup-lib
-  default-language: Haskell2010
-
-library iplookup-lib
-  exposed-modules:
-      IPTypes
-      LookupIP
-      ParseIP
-      FastLookup
-  hs-source-dirs:
-      ip/lookup
-  other-extensions:
-      TypeApplications
-  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -Wno-incomplete-uni-patterns
-  build-depends:
-      base ==4.16.*
-    , fingertree ==0.1.*
-    , split ==0.2.*
-  default-language: Haskell2010
-
-library isprime-lib
-  exposed-modules:
-      IsPrime
-      IsPrimeUnfolded
-  hs-source-dirs:
-      ch09/isprime
-  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
-  build-depends:
-      base ==4.16.*
-  default-language: Haskell2010
-
-library radar-lib
-  exposed-modules:
-      Radar
-  hs-source-dirs:
-      ch02/radar
-  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
-  build-depends:
-      base ==4.16.*
-  default-language: Haskell2010
-
-library rpc-lib
-  exposed-modules:
-      ClientUtils
-      ServerUtils
-      RpcCommon
-  other-modules:
-      DeclsGenerator
-      RemoteIO
-      RemoteParser
-      Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
-  hs-source-dirs:
-      ch12/rpc/lib
-  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
-  build-depends:
-      base ==4.16.*
-    , bytestring >=0.10 && <0.12
-    , cereal ==0.5.*
-    , connection ==0.3.*
-    , exceptions ==0.10.*
-    , haskell-src-exts >=1.20 && <1.24
-    , haskell-src-meta >=0.6 && <0.9
-    , mtl >=2.0 && <2.3
-    , network >=2.8 && <3.2
-    , network-simple >=0.4.5 && <0.5
-    , template-haskell >=2.13 && <2.19
-  default-language: Haskell2010
-
-library shunting-yard
-  exposed-modules:
-      ShuntingYard, Expr
-  hs-source-dirs:
-      expr
-  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
-  build-depends:
-      base ==4.16.*
-    , expr-simple
-    , mtl >=2.0 && <2.3
-    , text-show >=3.0 && <4
-  default-language: Haskell2010
-
 executable api-servant
   main-is: ch13/api/ApiServant.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
@@ -204,8 +88,6 @@ executable api-stage0
   main-is: ch13/api/Api0.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
       base ==4.16.*
@@ -215,8 +97,6 @@ executable api-stage1
   main-is: ch13/api/Api1.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
       base ==4.16.*
@@ -225,8 +105,6 @@ executable api-stage1
 executable api-stage2
   main-is: ch13/api/Api2.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   other-extensions:
       KindSignatures
@@ -242,8 +120,6 @@ executable api-stage2
 executable api-stage3
   main-is: ch13/api/Api3.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   other-extensions:
       KindSignatures
@@ -263,8 +139,6 @@ executable async-exc
   main-is: ch16/async-exc.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded
   build-depends:
       base ==4.16.*
@@ -273,8 +147,6 @@ executable async-exc
 executable basic-deriv
   main-is: basic-deriv.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       ch12/deriv/
@@ -287,8 +159,6 @@ executable chars
   main-is: ch14/chars.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
       base ==4.16.*
@@ -298,8 +168,6 @@ executable chars
 executable coerce
   main-is: coerce.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       ch12/deriv/
@@ -312,8 +180,6 @@ executable conc-hello
   main-is: ch16/conc-hello.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded
   build-depends:
       base ==4.16.*
@@ -322,8 +188,6 @@ executable conc-hello
 executable copy
   main-is: ch14/copy.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
@@ -338,8 +202,6 @@ executable countzeros
   main-is: countzeros.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   hs-source-dirs:
       ch05
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
@@ -352,8 +214,6 @@ executable covid
   other-modules:
       CovidCSVParser
       CovidData
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       ch14/covid
@@ -377,8 +237,6 @@ executable csv-simple
   main-is: ch14/csv-simple.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
       attoparsec ==0.14.*
@@ -395,8 +253,6 @@ executable dicegame
   main-is: dicegame.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   hs-source-dirs:
       ch05
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
@@ -410,8 +266,6 @@ executable div
   main-is: div.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   hs-source-dirs:
       ch07
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
@@ -423,8 +277,6 @@ executable div
 executable door
   main-is: ch13/doors/SingManual.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   other-extensions:
       DataKinds
@@ -440,8 +292,6 @@ executable door
 executable door-gen
   main-is: ch13/doors/SingGen.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   other-extensions:
       DataKinds
@@ -461,8 +311,6 @@ executable dots
   main-is: ch16/dots.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded
   build-depends:
       base ==4.16.*
@@ -471,8 +319,6 @@ executable dots
 executable dots-async
   main-is: ch16/dots-async.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded
   build-depends:
@@ -483,8 +329,6 @@ executable dots-async
 executable dots-async-cancel
   main-is: ch16/dots-async-cancel.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded
   build-depends:
@@ -497,8 +341,6 @@ executable dots-async-interrupted
   main-is: ch16/dots-async-interrupted.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded
   build-depends:
       async >=2.0 && <2.3
@@ -508,8 +350,6 @@ executable dots-async-interrupted
 executable dots-stm
   main-is: ch16/dots-stm.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded
   build-depends:
@@ -529,8 +369,6 @@ executable du
       DiskUsage
       FileCounter
       Utils
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       du
@@ -556,8 +394,6 @@ executable du
 executable dynvalues-gadt
   main-is: ch11/dynvalues-gadt.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   other-extensions:
       GADTs
@@ -635,8 +471,6 @@ executable expr-gadt
   main-is: expr/gadts/Main.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   other-extensions:
       GADTSyntax
       GADTs
@@ -648,8 +482,6 @@ executable expr-gadt
 executable filecount
   main-is: filecount.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       ch05
@@ -663,8 +495,6 @@ executable gcd
   main-is: gcd.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   hs-source-dirs:
       ch05
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
@@ -676,8 +506,6 @@ executable gcd
 executable genSQL
   main-is: genSQL.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       ch05
@@ -696,8 +524,6 @@ executable generic-sql
   other-modules:
       GenericSQL
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   hs-source-dirs:
       ch12/genSQL/
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
@@ -709,8 +535,6 @@ executable generic-sql
 
 executable hasql
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
@@ -739,8 +563,6 @@ executable hasql
 
 executable hdbc
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
@@ -784,8 +606,6 @@ executable interleaving
   main-is: ch16/interleaving.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded
   build-depends:
       base ==4.16.*
@@ -795,8 +615,6 @@ executable ioref
   main-is: ioref.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   hs-source-dirs:
       ch05
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
@@ -805,44 +623,58 @@ executable ioref
   default-language: Haskell2010
 
 executable ipgen
-  main-is: ip/gen/Main.hs
+  main-is: Main.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
-  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
+      GenIP
+      IPTypes
+  hs-source-dirs:
+      ip/gen
+      ip/common
+  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -Wno-incomplete-uni-patterns
   build-depends:
       base ==4.16.*
     , exceptions ==0.10.*
+    , fingertree ==0.1.*
     , hedgehog >=0.5 && <1.2
-    , ipgen-lib
     , optparse-applicative ==0.17.*
+    , split ==0.2.*
   default-language: Haskell2010
 
 executable iplookup
-  main-is: ip/lookup/Main.hs
+  main-is: Main.hs
   other-modules:
+      FastLookup
+      LookupIP
+      ParseIP
+      IPTypes
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
-  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
+  hs-source-dirs:
+      ip/lookup
+      ip/common
+  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -Wno-incomplete-uni-patterns
   build-depends:
       base ==4.16.*
     , exceptions ==0.10.*
-    , iplookup-lib
+    , fingertree ==0.1.*
     , optparse-applicative ==0.17.*
+    , split ==0.2.*
   default-language: Haskell2010
 
 executable iplookup-simulation
-  main-is: ip/iplookup-simulation.hs
+  main-is: iplookup-simulation.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
-  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
+      FastLookup
+      IPTypes
+      ParseIP
+  hs-source-dirs:
+      ip
+      ip/lookup
+      ip/common
+  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -Wno-incomplete-uni-patterns
   build-depends:
       base ==4.16.*
-    , iplookup-lib
+    , fingertree ==0.1.*
+    , split ==0.2.*
   default-language: Haskell2010
 
 executable isprime
@@ -854,15 +686,12 @@ executable isprime
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
       base ==4.16.*
-    , isprime-lib
     , timeit ==2.0.*
   default-language: Haskell2010
 
 executable lens-ex
   main-is: ch14/lens-ex.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
@@ -873,8 +702,6 @@ executable lens-ex
 executable logging
   main-is: logging.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       ch07
@@ -890,8 +717,6 @@ executable logging
 executable maybe
   main-is: maybe.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       ch05
@@ -916,8 +741,6 @@ executable mvar-deadlocks
   main-is: ch16/mvar-deadlocks.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded -Wno-unused-do-bind
   build-depends:
       async >=2.0 && <2.3
@@ -927,8 +750,6 @@ executable mvar-deadlocks
 executable newtype
   main-is: newtype.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       ch12/deriv/
@@ -943,8 +764,6 @@ executable nummod-rank-n
   other-modules:
       NumUtils
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   hs-source-dirs:
       ch11/nummod-rank-n/
   other-extensions:
@@ -956,8 +775,6 @@ executable nummod-rank-n
 
 executable opaleye
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
@@ -988,8 +805,6 @@ executable opaleye
 executable ordered-threads
   main-is: ch16/ordered-threads.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded
   build-depends:
@@ -1035,8 +850,6 @@ executable person-text
 executable pg-simple
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
       base ==4.16.*
@@ -1060,28 +873,60 @@ executable ping-client
   main-is: client.hs
   other-modules:
       PingCommon
+      ClientUtils
+      DeclsGenerator
+      RemoteIO
+      RemoteParser
+      RpcCommon
+      ServerUtils
+      Paths_hid_examples
   hs-source-dirs:
       ch12/rpc/ping/
+      ch12/rpc/lib
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
+  extra-lib-dirs:
+      ch12/rpc/lib
   build-depends:
       base ==4.16.*
+    , bytestring >=0.10 && <0.12
     , cereal ==0.5.*
+    , connection ==0.3.*
+    , exceptions ==0.10.*
+    , haskell-src-exts >=1.20 && <1.24
+    , haskell-src-meta >=0.6 && <0.9
     , mtl >=2.0 && <2.3
-    , rpc-lib
+    , network >=2.8 && <3.2
+    , network-simple >=0.4.5 && <0.5
+    , template-haskell >=2.13 && <2.19
   default-language: Haskell2010
 
 executable ping-server
   main-is: server.hs
   other-modules:
       PingCommon
+      ClientUtils
+      DeclsGenerator
+      RemoteIO
+      RemoteParser
+      RpcCommon
+      ServerUtils
+      Paths_hid_examples
   hs-source-dirs:
       ch12/rpc/ping/
+      ch12/rpc/lib
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
       base ==4.16.*
+    , bytestring >=0.10 && <0.12
     , cereal ==0.5.*
+    , connection ==0.3.*
+    , exceptions ==0.10.*
+    , haskell-src-exts >=1.20 && <1.24
+    , haskell-src-meta >=0.6 && <0.9
     , mtl >=2.0 && <2.3
-    , rpc-lib
+    , network >=2.8 && <3.2
+    , network-simple >=0.4.5 && <0.5
+    , template-haskell >=2.13 && <2.19
   default-language: Haskell2010
 
 executable predicates
@@ -1127,8 +972,6 @@ executable pub-sub
   main-is: ch16/pub-sub.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded
   build-depends:
       async >=2.0 && <2.3
@@ -1154,8 +997,6 @@ executable radar
 executable reader
   main-is: reader.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       ch05
@@ -1188,8 +1029,6 @@ executable simple-streaming
   main-is: ch14/simple-streaming.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
       base ==4.16.*
@@ -1203,8 +1042,6 @@ executable stockquotes
       Params
       QuoteData
       StatReport
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       stockquotes
@@ -1233,8 +1070,6 @@ executable strategies
   main-is: strategies.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   hs-source-dirs:
       ch12/deriv/
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
@@ -1247,8 +1082,6 @@ executable stream
   main-is: ch14/stream.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
       base ==4.16.*
@@ -1257,8 +1090,6 @@ executable stream
 executable stref
   main-is: stref.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       ch05
@@ -1271,8 +1102,6 @@ executable sum-numbers
   main-is: ch16/sum-numbers.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded
   build-depends:
       async >=2.0 && <2.3
@@ -1282,8 +1111,6 @@ executable sum-numbers
 executable sum-numbers-many-workers
   main-is: ch16/sum-numbers-many-workers.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded
   build-depends:
@@ -1297,8 +1124,6 @@ executable sumlist
   main-is: sumlist.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   hs-source-dirs:
       ch05
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
@@ -1310,8 +1135,6 @@ executable sumlist
 executable sumtab
   main-is: ch14/sumtab.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
@@ -1331,8 +1154,6 @@ executable suntimes
       STExcept
       SunTimes
       Types
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       suntimes
@@ -1410,8 +1231,6 @@ executable tree-async
   main-is: ch16/tree-async.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded
   build-depends:
       async >=2.0 && <2.3
@@ -1425,8 +1244,6 @@ executable type-families
       SimplifyWiden
       Unescape
       XListable
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       ch11/type-families
@@ -1469,8 +1286,6 @@ executable unboxed
   main-is: ch09/unboxed.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   other-extensions:
       UnboxedTuples
       UnboxedSums
@@ -1496,8 +1311,6 @@ executable via
   main-is: via.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   hs-source-dirs:
       ch12/deriv/
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
@@ -1508,8 +1321,6 @@ executable via
 executable view-generic
   main-is: view-generic.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       ch12/generics/
@@ -1555,8 +1366,6 @@ executable wait-completion
   main-is: ch16/wait-completion.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -threaded
   build-depends:
       base ==4.16.*
@@ -1566,8 +1375,6 @@ executable wait-completion
 executable weapons
   main-is: weapons.hs
   other-modules:
-      Paths_hid_examples
-  autogen-modules:
       Paths_hid_examples
   hs-source-dirs:
       ch05
@@ -1581,12 +1388,14 @@ executable weapons
 test-suite expr-simple-test
   type: exitcode-stdio-1.0
   main-is: Test1.hs
+  other-modules:
+      Expr
   hs-source-dirs:
       tests/expr
+      expr
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
       base ==4.16.*
-    , expr-simple
     , hint >=0.7 && <0.10
     , text-show >=3.0 && <4
   default-language: Haskell2010
@@ -1596,12 +1405,10 @@ test-suite iplookup-doctest
   main-is: tests/iplookup-doctest/Doctests.hs
   other-modules:
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
       base ==4.16.*
-    , doctest >=0.12 && <0.19
+    , doctest >=0.12 && <0.21
     , split ==0.2.*
   default-language: Haskell2010
 
@@ -1609,49 +1416,60 @@ test-suite iplookup-test
   type: exitcode-stdio-1.0
   main-is: Test.hs
   other-modules:
+      FastLookup
+      GenIP
       GoldenTests
+      IPTypes
+      LookupIP
       LookupIPSpec
+      ParseIP
       ParseIPSpec
       Props
-      Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   hs-source-dirs:
       tests/iplookup
-  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -Wno-type-defaults
+      ip/gen
+      ip/lookup
+  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -Wno-type-defaults -Wno-incomplete-uni-patterns
   build-depends:
       base ==4.16.*
     , filepath >=1.4.1 && <1.5
+    , fingertree >=0.1.5 && <1.6
     , hedgehog >=0.5 && <1.2
-    , ipgen-lib
-    , iplookup-lib
+    , hspec >=2.9 && <3.0
+    , split ==0.2.*
     , tasty >=0.11 && <1.5
     , tasty-golden ==2.3.*
-    , tasty-hedgehog >=0.1 && <1.2
-    , tasty-hspec ==1.1.*
+    , tasty-hedgehog ==1.3.*
+    , tasty-hspec ==1.2.*
   default-language: Haskell2010
 
 test-suite radar-test
   type: exitcode-stdio-1.0
   main-is: Test.hs
+  other-modules:
+      Radar
   hs-source-dirs:
       tests/radar
+      ch02/radar
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
       base ==4.16.*
-    , radar-lib
     , random ==1.2.*
   default-language: Haskell2010
 
 test-suite shunting-yard-test
   type: exitcode-stdio-1.0
   main-is: Test2.hs
+  other-modules:
+      Expr
+      ShuntingYard
   hs-source-dirs:
       tests/expr
+      expr
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
       base ==4.16.*
-    , shunting-yard
+    , mtl ==2.2.*
     , text ==1.2.*
     , text-show >=3.0 && <4
   default-language: Haskell2010
@@ -1659,37 +1477,31 @@ test-suite shunting-yard-test
 benchmark iplookup-bench
   type: exitcode-stdio-1.0
   main-is: Bench.hs
-  other-modules:
-      BenchBuildIP
-      BenchBuildIPGroups
-      BenchLookupIP
-      BenchParseIP
-      BenchRanges
-      Data
-      NFUtils
-      Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
   hs-source-dirs:
       benchmarks/iplookup
-  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
+      ip/lookup
+  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans -Wno-incomplete-uni-patterns
   build-depends:
       base ==4.16.*
     , criterion >=1.4 && <1.6
     , deepseq >=1.3 && <1.5
-    , iplookup-lib
+    , fingertree >=0.1.5 && <1.6
+    , split ==0.2.*
   default-language: Haskell2010
 
 benchmark primcheck
   type: exitcode-stdio-1.0
-  main-is: benchmarks/primcheck.hs
+  main-is: primcheck.hs
   other-modules:
+      IsPrime
+      IsPrimeUnfolded
+      Main
       Paths_hid_examples
-  autogen-modules:
-      Paths_hid_examples
+  hs-source-dirs:
+      benchmarks
+      ch09/isprime
   ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
   build-depends:
       base ==4.16.*
     , criterion >=1.4 && <1.6
-    , isprime-lib
   default-language: Haskell2010

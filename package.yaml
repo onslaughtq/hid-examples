@@ -271,18 +271,28 @@ executables:
         - text >=1.2 && <1.3
     # Chapter 8
     iplookup:
-        main: ip/lookup/Main.hs
+        source-dirs: [ip/lookup, ip/common]
+        main: Main.hs
         dependencies:
           - exceptions >= 0.10 && < 0.11
           - optparse-applicative >= 0.17 && < 0.18
-          - iplookup-lib
+          - split >= 0.2 && < 0.3
+          - fingertree >= 0.1 && < 0.2
+        ghc-options:
+          - -Wno-incomplete-uni-patterns
     ipgen:
-        main: ip/gen/Main.hs
+        source-dirs: [ip/gen, ip/common]
+        main: Main.hs
+        other-modules: [ GenIP, IPTypes ]
         dependencies:
-          - ipgen-lib
           - exceptions >= 0.10 && < 0.11
           - optparse-applicative >= 0.17 && < 0.18
           - hedgehog >= 0.5 && < 1.2
+          - split >= 0.2 && < 0.3
+          - fingertree >= 0.1 && < 0.2
+          - hedgehog >= 0.5 && < 1.2
+        ghc-options:
+          - -Wno-incomplete-uni-patterns
     # Chapter 9
     unboxed:
         main: ch09/unboxed.hs
@@ -294,13 +304,17 @@ executables:
       main: Main.hs
       other-modules: [IsPrime]
       dependencies:
-        - isprime-lib
         - timeit >= 2.0 && < 2.1
     # Chapter 10
     iplookup-simulation:
-        main: ip/iplookup-simulation.hs
+        source-dirs: [ip, ip/lookup, ip/common]
+        main: iplookup-simulation.hs
+        other-modules: [ FastLookup, IPTypes, ParseIP ]
         dependencies:
-          - iplookup-lib
+          - split >= 0.2 && < 0.3
+          - fingertree >= 0.1 && < 0.2
+        ghc-options:
+          - -Wno-incomplete-uni-patterns
     # Chapter 11
     temp-proxies:
         source-dirs: ch11/temperature
@@ -439,21 +453,34 @@ executables:
           - -Wno-missing-signatures
           - -Wno-incomplete-patterns
     ping-server:
-        source-dirs: ch12/rpc/ping/
+        source-dirs: [ch12/rpc/ping/, ch12/rpc/lib]
         main: server.hs
-        other-modules: [ PingCommon ]
         dependencies:
-          - rpc-lib
+          - bytestring >=0.10 && <0.12
           - mtl >=2.0 && <2.3
           - cereal >= 0.5 && <0.6
+          - network >= 2.8 && <3.2
+          - connection >= 0.3 && <0.4
+          - network-simple >=0.4.5 && <0.5
+          - exceptions >= 0.10 && < 0.11
+          - template-haskell >= 2.13 && <2.19
+          - haskell-src-exts >= 1.20 && <1.24
+          - haskell-src-meta >= 0.6 && < 0.9
     ping-client:
-        source-dirs: ch12/rpc/ping/
+        source-dirs: [ch12/rpc/ping/, ch12/rpc/lib]
+        extra-lib-dirs: ch12/rpc/lib
         main: client.hs
-        other-modules: [ PingCommon ]
         dependencies:
-          - rpc-lib
+          - bytestring >=0.10 && <0.12
           - mtl >=2.0 && <2.3
           - cereal >= 0.5 && <0.6
+          - network >= 2.8 && <3.2
+          - connection >= 0.3 && <0.4
+          - network-simple >=0.4.5 && <0.5
+          - exceptions >= 0.10 && < 0.11
+          - template-haskell >= 2.13 && <2.19
+          - haskell-src-exts >= 1.20 && <1.24
+          - haskell-src-meta >= 0.6 && < 0.9
     # Chapter 13
     api-stage0:
         main: ch13/api/Api0.hs
@@ -741,143 +768,72 @@ executables:
         - stm-chans >= 3.0 && < 3.1
       ghc-options:
         -threaded
-internal-libraries:
-    # Chapter 2
-    radar-lib:
-        source-dirs: ch02/radar
-        exposed-modules: Radar
-        other-modules: []
-    expr-simple:
-        source-dirs: expr
-        exposed-modules: Expr
-        other-modules: []
-        dependencies:
-          - text-show >= 3.0 && < 4
-    contexts:
-        source-dirs: ch02
-        exposed-modules: Contexts
-        other-modules: []
-        dependencies:
-          - mtl >=2.0 && <2.3
-    # Chapter 5
-    shunting-yard:
-        source-dirs: expr
-        exposed-modules: ShuntingYard, Expr
-        other-modules: []
-        dependencies:
-          - expr-simple
-          - mtl >=2.0 && <2.3
-          - text-show >=3.0 && <4
-    # Chapter 8
-    iplookup-lib:
-        source-dirs: ip/lookup
-        exposed-modules:
-          - IPTypes
-          - LookupIP
-          - ParseIP
-          - FastLookup
-        other-modules: []
-        dependencies:
-          - split >= 0.2 && < 0.3
-          - fingertree >= 0.1 && < 0.2
-        other-extensions:
-          - TypeApplications
-        ghc-options:
-          - -Wno-incomplete-uni-patterns
-    ipgen-lib:
-        source-dirs: ip/gen
-        exposed-modules:
-          - GenIP
-        other-modules: []
-        dependencies:
-          - iplookup-lib
-          - hedgehog >= 0.5 && < 1.2
-    # Chapter 9
-    isprime-lib:
-      source-dirs: ch09/isprime
-      exposed-modules:
-        - IsPrime
-        - IsPrimeUnfolded
-      other-modules: []
-    # Chapter 12
-    rpc-lib:
-      source-dirs: ch12/rpc/lib
-      exposed-modules:
-        - ClientUtils
-        - ServerUtils
-        - RpcCommon
-      dependencies:
-        - bytestring >=0.10 && <0.12
-        - mtl >=2.0 && <2.3
-        - cereal >= 0.5 && <0.6
-        - network >= 2.8 && <3.2
-        - connection >= 0.3 && <0.4
-        - network-simple >=0.4.5 && <0.5
-        - exceptions >= 0.10 && < 0.11
-        - template-haskell >= 2.13 && <2.19
-        - haskell-src-exts >= 1.20 && <1.24
-        - haskell-src-meta >= 0.6 && < 0.9
 tests:
     # Chapter 2
     radar-test:
-        source-dirs: tests/radar
+        source-dirs: [tests/radar, ch02/radar]
         main: Test.hs
-        other-modules: []
+        other-modules: [ Radar ]
         dependencies:
-          - radar-lib
           - random >=1.2 && <1.3
     expr-simple-test:
-        source-dirs: tests/expr
+        source-dirs: [tests/expr, expr]
         main: Test1.hs
-        other-modules: []
+        other-modules: [ Expr ]
         dependencies:
-          - expr-simple
           - hint >=0.7 && <0.10
           - text-show >=3.0 && <4
     # Chapter 5
     shunting-yard-test:
-        source-dirs: tests/expr
+        source-dirs: [tests/expr, expr]
+        other-modules: [Expr, ShuntingYard]
         main: Test2.hs
-        other-modules: []
         dependencies:
-          - shunting-yard
+          - mtl >=2.2 && <2.3
           - text-show >=3.0 && <4
           - text >=1.2 && <1.3
     # Chapter 8
     iplookup-test:
         main: Test.hs
-        source-dirs: tests/iplookup
+        source-dirs: [tests/iplookup, ip/gen, ip/lookup]
+        other-modules: [ FastLookup, GenIP, GoldenTests, IPTypes, LookupIP, LookupIPSpec, ParseIP, ParseIPSpec, Props ]
         dependencies:
-          - iplookup-lib
-          - ipgen-lib
           - tasty >= 0.11 && < 1.5
-          - tasty-hspec >= 1.1 && < 1.2
-          - tasty-hedgehog >= 0.1 && < 1.2
+          - hspec >= 2.9 && < 3.0
+          - tasty-hspec >= 1.2 && < 1.3
+          - tasty-hedgehog >= 1.3 && < 1.4
           - hedgehog >= 0.5 && < 1.2
           - tasty-golden >= 2.3 && < 2.4
           - filepath >= 1.4.1 && < 1.5
+          - fingertree >= 0.1.5 && <1.6
+          - split >= 0.2 && < 0.3
         ghc-options:
           - -Wno-type-defaults
+          - -Wno-incomplete-uni-patterns
     iplookup-doctest:
       main: tests/iplookup-doctest/Doctests.hs
       dependencies:
-        - doctest >= 0.12 && < 0.19
+        - doctest >= 0.12 && < 0.21
         - split >= 0.2 && < 0.3
 
 benchmarks:
     # Chapter 10
     primcheck:
-        main: benchmarks/primcheck.hs
+        source-dirs: [benchmarks, ch09/isprime]
+        main: primcheck.hs
         dependencies:
-          - isprime-lib
           - criterion >= 1.4 && < 1.6
     iplookup-bench:
-        source-dirs: benchmarks/iplookup
+        source-dirs: [benchmarks/iplookup, ip/lookup]
+        other-modules: []
         main: Bench.hs
         dependencies:
-          - iplookup-lib
           - criterion >= 1.4 && < 1.6
           - deepseq >= 1.3 && <1.5
+          - fingertree >= 0.1.5 && <1.6
+          - split >= 0.2 && < 0.3
+        ghc-options:
+          - -Wno-incomplete-uni-patterns
 
 library:
     source-dirs: empty
